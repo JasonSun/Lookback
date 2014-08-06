@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "个人信息";
+}
+
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <div class="panel-title">@Session["currentUserName"]</div>
+  </div>
+  <div class="panel-body">
+    <div class="col-lg-3">
+      <img class="img-rounded" src="@Url.Action("GetAvatar", "Account", new { size = 180 })" />
+    </div>
+    <div class="col-lg-5">
+      <ul class="list-group">
+        <li class="list-group-item"><span class="badge">@ViewBag.User.friends_count</span>关注</li>
+        <li class="list-group-item"><span class="badge">@ViewBag.User.followers_count</span>粉丝</li>
+        <li class="list-group-item"><span class="badge">@ViewBag.User.statuses_count</span>微博</li>
+      </ul>
+    </div>
+    <div class="col-lg-4">
+      <a class="btn btn-primary btn-block" href="/Weibo/Myself">我的微博足迹</a>
+      <div>
+        @foreach (var poi in ViewBag.Checkins)
+        {
+          <br /><span class="label label-success">@poi</span><br />
+        }.........
+      </div>
+    </div>
+  </div>
+</div>

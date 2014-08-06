@@ -1,0 +1,75 @@
+﻿/*!
+ * CSS Document
+ * 
+ * Thank you @author zongxian.chen at 2012/04/16 build.
+ * @version $Id$
+ *
+ */
+
+/* 定义自定义信息窗体样式 */
+div.info {
+	position: relative;
+	z-index: 100;
+	border: 1px solid #BCBCBC;
+	box-shadow: 0 0 10px #B7B6B6;
+	border-radius: 8px;
+	background-color: rgba(255,255,255,0.9);
+	transition-duration: 0.25s;
+}
+div.info:hover {
+	box-shadow: 0px 0px 15px #0CF;
+  cursor: default;
+}
+
+div.info-top {
+	position: relative;
+	background: none repeat scroll 0 0 #E5E5E5;
+	border-bottom: 1px solid #CCC;
+	border-radius:5px 5px 0 0;
+}
+div.info-top div {
+	display: inline-block;
+	color: #333333;
+	font-size:14px;
+	font-weight:bold;
+	line-height:31px;
+	padding:0 10px;
+}
+div.info-top img {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	transition-duration: 0.25s;
+}
+div.info-top img:hover{
+	box-shadow: 0px 0px 5px #000;
+}
+
+div.info-middle {
+	font-size:12px;
+	padding:10px;
+	line-height:21px;
+}
+  div.info-middle a:hover {
+    cursor: pointer;
+  }
+
+div.info-bottom {
+	height:0px;
+	width:100%;
+	clear:both;
+	text-align:center;
+}
+div.info-bottom img{
+	position: relative;
+	z-index:104;
+}
+
+.fixed {
+    position: fixed;
+    top: 10px;
+}
+
+.focused {
+  background-color: #0CF;
+}

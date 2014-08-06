@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>@ViewBag.Title - 回 眸</title>
+  <link type="text/css" rel="stylesheet" href="~/Content/css/bootstrap.css" />
+  @Scripts.Render("~/bundles/modernizr")
+  @Scripts.Render("~/bundles/jquery")
+  <script type="text/javascript" src="~/Scripts/bootstrap.js"></script>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10">
+      <header>
+        <nav class="navbar navbar-default" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/" style="width: 50px; background-image: url('/Images/logo.jpeg');"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li><a href="/Weibo/Myself">看自己</a></li>
+                <li><a href="/Weibo/Friend">看朋友</a></li>
+                @*<li><a href="/Weibo/Follower">看粉丝</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">One more separated link</a></li>
+                  </ul>
+                </li>*@
+              </ul>
+              @if (Session["currentUserId"] != null)
+              {
+                <ul class="nav navbar-nav navbar-right">
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Session["currentUserName"] <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="/Account/MyProfile">查看个人信息</a></li>
+                      <li class="divider"></li>
+                      <li><a href="/Account/Logout">退 出</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              }
+              else
+              {
+                <button type="button" id="nav-login" class="navbar-right btn btn-primary navbar-btn">登 录</button>
+              }
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+        </nav>
+      </header>
+      <div id="body" class="clearfix">
+        @RenderBody()
+      </div>
+      <footer style="border-top: 1px solid #bdbdbd; padding-top: 10px; margin-top: 40px;">
+        <div class="col-lg-4">
+          <p>&copy; @DateTime.Now.Year - 回 眸</p>
+        </div>
+        <div class="col-lg-8">
+          <a href="http://www.oschina.net/"><img src="~/Images/logo_osc.png" style="margin-right: 20px;" /></a>
+          <a href="http://developer.amap.com/"><img src="~/Images/logo_gaode.png" /></a>
+          <a href="http://www.aliyun.com/"><img src="~/Images/logo_ali.png" /></a>
+        </div>
+      </footer>
+    </div>
+    <div class="col-lg-1"></div>
+  </div>
+
+  <!-- login modal -->
+  <div class="modal fade" id="login-modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
+          <h4 class="modal-title">请使用以下社交账号登陆</h4>
+        </div>
+        <div class="modal-body">
+          <p><a href="/OAuth/Weibo"><img src="~/Images/weibologon32.png" /></a></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div>
+
+  <script type="text/javascript">
+    $('#nav-login').click(function () {
+      $('#login-modal').modal({
+        backdrop: 'static'
+      });
+    });
+  </script>
+  
+  @RenderSection("scripts", required: false)
+</body>
+</html>
