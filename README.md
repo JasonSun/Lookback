@@ -9,3 +9,4 @@ Lookback
 * jQuery
 * 高德地图API
 * 新浪微博API
+* AppHarbor.com Platform
